@@ -38,9 +38,8 @@ void Camp::craft() {
     cout << "1. Airtank" << endl;
     cout << "2. Bow and Arrows" << endl;
     cout << "3. Boat" << endl;
-    cout << "4. Desalinator" << endl;
-    cout << "5. Exit craft menu" << endl;
-    validateInt(&craftInt, 1, 6);
+    cout << "4. Exit craft menu" << endl;
+    validateInt(&craftInt, 1, 4);
     switch (craftInt) {
         case 1: 
             cout << "Crafting an airtank requires 10 pieces of plastic" << endl;
@@ -88,22 +87,7 @@ void Camp::craft() {
                 cout << "You do not have enough wood" << endl;
             }
             cout << "Exiting craft menu" << endl;
-            break;            
-        case 4: 
-            cout << "Crafting a desalinator requires 20 plastic" << endl;
-            cout << "Would you still like to build a desalinator?" << endl;
-            cout << "1. Yes" << endl;
-            cout << "2. No" << endl;
-            validateInt(&craftInt, 1,2);
-            if (craftInt == 1 && this->inventory->getPlastic() >= 20) {
-                this->inventory->setPlastic(-20);
-                cout << "You have " << this->inventory->getPlastic() << " plastic left." << endl;
-            }
-            else {
-                cout << "You do not have enough plastic" << endl;
-            }
-            cout << "Exiting craft menu" << endl;
-            break;                                        
+            break;                                                
     }
 }
 
@@ -121,8 +105,13 @@ void Camp::changeLocation() {
             this->character->currentLocation->printLocation();
             break;
         case 2:
-            this->character->currentLocation = this->right;
-            this->character->currentLocation->printLocation();
+            if (this->character->hasAxe) {
+                this->character->currentLocation = this->right;
+                this->character->currentLocation->printLocation();
+            }
+            else {
+                cout << "The jungle is covered in thick foliage. You need an axe to enter." << endl;
+            }
             break;
         case 3:
             this->character->currentLocation = this->bottom;

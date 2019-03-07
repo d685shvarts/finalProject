@@ -9,5 +9,6 @@ public:
     Volcano(Inventory* inventory, Character* character);
     virtual void spaceMenu();
     void changeLocation();
+    void volcanoRiddle();
 };
 #endif

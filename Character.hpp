@@ -12,8 +12,9 @@ private:
         hunger;
     bool hasAxe,
         hasBoat,
-        hasDesalinator,
+        hasBowAndArrows,
         hasCompass,
+        hasAirtank,
         alive;
     Space* currentLocation;
     Inventory inventory;
@@ -23,7 +24,6 @@ public:
     bool getAlive();
     void setBoat(bool boat);
     void setAxe(bool axe);
-    void setDesalinator(bool desalinator);
     void setCompass(bool compass);
     void setAlive(bool alive);
     Inventory* getInventory();

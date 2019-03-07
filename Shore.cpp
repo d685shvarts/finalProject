@@ -35,12 +35,23 @@ void Shore::changeLocation() {
     validateInt(&location, 1, 4);
     switch (location) {
         case 1:
-            this->character->currentLocation = this->top;
-            this->character->currentLocation->printLocation();
+            if (this->character->hasBoat && this->character->hasCompass && this->character->hasBowAndArrows) {
+                this->character->currentLocation = this->top;
+                this->character->currentLocation->printLocation();
+            }
+            else {
+                cout << "The ocean is a dangerous place, you'll need a boat" << endl;
+                cout << "a compass and a bow and arrow to go here" << endl;
+            }
             break;
         case 2:
+        if (this->character->hasAirtank) {
             this->character->currentLocation = this->left;
             this->character->currentLocation->printLocation();
+        }
+        else {
+            cout << "The shipwreck is underwater, you'll need an airtank to go here" << endl;
+        }
             break;
         case 3:
             this->character->currentLocation = this->bottom;

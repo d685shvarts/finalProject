@@ -12,7 +12,7 @@ Character::Character() {
     cout << "Initializing Character" << endl;
     this->health = 100;
     this->thirst = this->hunger = 0;
-    this->hasAxe = this->hasBoat = this->hasDesalinator = this->hasCompass = false;
+    this->hasAxe = this->hasBoat = this->hasBowAndArrows = this->hasCompass = this->hasAirtank = false;
     this->alive = true;
     this->currentLocation = nullptr;
     Inventory inventory;
@@ -31,7 +31,7 @@ void Character::characterMenu() {
         cout << "1. Print inventory" << endl;
         cout << "2. Drop items" << endl;
         validateInt(&inventoryChoice, 1, 2);
-        if (menuChoice == 1) {
+        if (inventoryChoice == 1) {
             this->inventory.printInventory();
         }
         else {
@@ -55,9 +55,7 @@ void Character::setBoat(bool boat) {
 void Character::setAxe(bool axe) {
     this->hasAxe = axe;
 }
-void Character::setDesalinator(bool desalinator) {
-    this->hasDesalinator = desalinator;
-}
+
 void Character::setCompass(bool compass) {
     this->hasCompass = compass;
 }
