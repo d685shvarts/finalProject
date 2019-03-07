@@ -6,12 +6,15 @@
 using std::endl;
 using std::cout;
 
+
+
 Character::Character() {
     cout << "Initializing Character" << endl;
     this->health = 100;
     this->thirst = this->hunger = 0;
-    this->hasAxe = this->hasFishingPole = this->hasBoat = this->hasDesalinator = this->hasDesalinator = this->hasAirtank = false;
+    this->hasAxe = this->hasBoat = this->hasDesalinator = this->hasCompass = false;
     this->alive = true;
+    this->currentLocation = nullptr;
     Inventory inventory;
 }
 
@@ -20,7 +23,7 @@ void Character::characterMenu() {
         inventoryChoice;
     cout << "Please select a choice by entering the corresponding integer" << endl;
     cout << "1. Access inventory" << endl;
-    cout << "2. Change location" << endl;
+    cout << "2. Interact with location" << endl;
     validateInt(&menuChoice, 1, 2);
 
     if (menuChoice == 1) {
@@ -34,10 +37,39 @@ void Character::characterMenu() {
         else {
             this->inventory.dropItems();
         }
-
     }
+    else {
+        this->currentLocation->spaceMenu();
+    }
+    
 }
 
 bool Character::getAlive() {
     return this->alive;
+}
+
+void Character::setBoat(bool boat) {
+    this->hasBoat = boat;
+}
+
+void Character::setAxe(bool axe) {
+    this->hasAxe = axe;
+}
+void Character::setDesalinator(bool desalinator) {
+    this->hasDesalinator = desalinator;
+}
+void Character::setCompass(bool compass) {
+    this->hasCompass = compass;
+}
+
+void Character::setAlive(bool alive) {
+    this->alive = alive;
+}
+
+Inventory* Character::getInventory() {
+    return &inventory;
+}
+
+void Character::setLocation(Space* location) {
+    this->currentLocation = location;
 }
