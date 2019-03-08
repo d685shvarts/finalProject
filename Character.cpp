@@ -19,6 +19,7 @@ Character::Character() {
 Character::~Character() {
     delete this->inventory;
 }
+
 void Character::characterMenu() {
     int menuChoice,
         inventoryChoice;
@@ -53,18 +54,6 @@ bool Character::getAlive() {
     return this->alive;
 }
 
-void Character::setBoat(bool boat) {
-    this->hasBoat = boat;
-}
-
-void Character::setAxe(bool axe) {
-    this->hasAxe = axe;
-}
-
-void Character::setCompass(bool compass) {
-    this->hasCompass = compass;
-}
-
 void Character::setAlive(bool alive) {
     this->alive = alive;
 }
@@ -83,4 +72,53 @@ void Character::printCharacterStats() {
     cout << "You thirst is: " << this->thirst << "/100" << endl;
     cout << "You hunger is: " << this->hunger << "/100" << endl;
     cout << endl;
+}
+
+void Character::ageCharacter() {
+    if (this->inventory->water > 0) {
+        cout << "Consuming 1 water, you thirst is back to 0" << endl;
+        this->inventory->water--;
+        this->thirst = 0;
+    }
+    else {
+        cout << "You have no water, your thirst is increased!" << endl;
+        this->thirst += 25;
+    }
+
+    if (this->inventory->food > 0) {
+        cout << "Consuming 1 food, you hunger is back to 0" << endl;
+        this->inventory->food--;
+        this->hunger = 0;
+    }
+    else {
+        cout << "You have no food, your hunger is increased!" << endl;
+        this->hunger += 20;
+    }
+
+    if (this->hunger > 100) {
+        cout << "You are starving. Your health has decreased!" << endl;
+        this->health -= 20;
+    }
+
+    if (this->thirst > 100) {
+        cout << "You are dehydrated. Your health has decreased!" << endl;
+        this->health -= 25;
+    }
+
+    if (this->hunger < 100 && this->thirst < 100) {
+        if (this->health < 100) {
+            cout << "You are well nourished you health is restoring slowly" << endl;
+            health += 20;
+
+        }
+        if (this->health > 100) {
+            this->health = 100;
+        }
+    }
+
+    if (this->health < 0) {
+        cout << "Your health has fallen below 0!" << endl;
+    }
+
+    printCharacterStats();
 }

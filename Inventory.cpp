@@ -15,7 +15,7 @@ Inventory::Inventory(Character* character) {
 
 void Inventory::printInventory() {
     this->weight = this->food + this->water + this->plastic + this->wood + this->bowAndArrows
-    + this->axe + this->compass + this->airtank;
+    + this->axe + this->compass + this->airtank + this->boat;
 
     cout << "Your capacity is: " << this->weight << "/" << this->capacity << endl;
     cout << "Your inventory contains: " << endl;
@@ -27,6 +27,7 @@ void Inventory::printInventory() {
     cout << "Axe: " << this->axe << endl;
     cout << "Compass: " << this->compass << endl;
     cout << "Airtank: " << this->airtank << endl;
+    cout << "Boat: " << this->boat << endl;
 }
 
 void Inventory::dropItems() {
@@ -86,83 +87,70 @@ void Inventory::dropItems() {
             break;
         case 5:
             cout << "Do you really want to drop your bow and arrows?" << endl;
+            cout << "1. Yes" << endl;
+            cout << "2. No" << endl;
             validateInt(&quantity, 1, 2);
-            if (this->bowAndArrows > 0) {
+            if (quantity == 1 && this->bowAndArrows > 0) {
                 this->bowAndArrows--;
-                this->character->hasBowAndArrows = false;
+            }
+            else if (quantity == 2) {
+                cout << "Exiting drop menu" << endl;
             }
             else {
-                cout << "You cant drop that many items" << endl;
+                cout << "You dont have bow and arrows to drop" << endl;
             }
             break;
         case 6:
-            cout << "How much plastic would you like to drop?" << endl;
-            validateInt(&quantity, 1, this->capacity);
-            if (this->plastic - quantity >= 0) {
-                this->plastic -= quantity;
-                this->weight -= quantity;
+            cout << "Do you really want to drop you axe?" << endl;
+            cout << "1. Yes" << endl;
+            cout << "2. No" << endl;
+            validateInt(&quantity, 1, 2);
+            if (quantity == 1 && this->axe > 0) {
+                this->axe--;
+            }
+            else if (quantity == 2) {
+                cout << "Exiting drop menu" << endl;
             }
             else {
-                cout << "You cant drop that many items" << endl;
+                cout << "You don't have an axe to drop" << endl;
             }
             break;
         case 7:
-            cout << "How many airtanks would you like to drop?" << endl;
-            validateInt(&quantity, 1, this->capacity);
-            if (this->airtank - quantity >= 0) {
-                this->airtank -= quantity;
-                this->airtank -= quantity;
+            cout << "Do you really want to drop you compass?" << endl;
+            cout << "1. Yes" << endl;
+            cout << "2. No" << endl;
+            validateInt(&quantity, 1, 2);
+            if (quantity == 1 && this->compass > 0) {
+                this->compass--;
+            }
+            else if (quantity == 2) {
+                cout << "Exiting drop menu" << endl;
             }
             else {
-                cout << "You cant drop that many items" << endl;
+                cout << "You don't have a compass to drop" << endl;
+            }
+            break;
+        case 8:
+            cout << "Do you really want to drop you airtank?" << endl;
+            cout << "1. Yes" << endl;
+            cout << "2. No" << endl;
+            validateInt(&quantity, 1, 2);
+            if (quantity == 1 && this->airtank > 0) {
+                this->airtank--;
+            }
+            else if (quantity == 2) {
+                cout << "Exiting drop menu" << endl;
+            }
+            else {
+                cout << "You don't have an airtank to drop" << endl;
             }
             break;
     }
-    cout << "Exiting drop items screen" << endl;
-
-}
-
-int Inventory::getPlastic() {
-    return this->plastic;
-}
-
-int Inventory::getWood() {
-    return this->wood;
-}
-
-void Inventory::setPlastic(int plastic) {
-    this->plastic += plastic;
-    this->weight += plastic;
-    exceedCapacity();
-}
-
-
-void Inventory::setWood(int wood) {
-    this->wood += wood;
-    this->weight += wood;
-    exceedCapacity();
-}
-
-void Inventory::setAirtank(int airtank) {
-    this->airtank += airtank;
-    this->weight += airtank;
-    exceedCapacity();
-}
-
-void Inventory::setTorch(int torch) {
-    this->torch += torch;
-    this->weight += torch;
-    exceedCapacity();
-}
-
-void Inventory::setTrap(int trap) {
-    this->trap += trap;
-    this->weight += trap;
-    exceedCapacity();
+    cout << "Exiting drop items menu" << endl;
 }
 
 void Inventory::exceedCapacity() {
-    if (this->weight > this-> capacity){
+    if (this->weight > this->capacity){
         cout << "You are holding too many items, you must drop some" << endl;
         dropItems();
     }

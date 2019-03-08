@@ -15,21 +15,15 @@ protected:
         axe,
         bowAndArrows,
         compass,
+        boat,
         airtank;
     Character* character;
 public:
     Inventory(Character* character);
     void printInventory();
     void dropItems();
-    friend class Character;
-    int getPlastic();
-    void setPlastic(int plastic);
-    int getWood();
-    void setWood(int wood);
-    void setAirtank(int airtank);
-    void setTorch(int torch);
-    void setTrap(int trap);
     void exceedCapacity();
+    friend class Character;
     friend class Volcano;
     friend class Camp;
     friend class Shipwreck;

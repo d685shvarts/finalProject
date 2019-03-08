@@ -10,12 +10,7 @@ private:
     int health,
         thirst,
         hunger;
-    bool hasAxe,
-        hasBoat,
-        hasBowAndArrows,
-        hasCompass,
-        hasAirtank,
-        alive;
+    bool alive;
     Space* currentLocation;
     Inventory* inventory;
 public:
@@ -30,6 +25,7 @@ public:
     Inventory* getInventory();
     void setLocation(Space* location);
     void printCharacterStats();
+    void ageCharacter();
     friend class Camp;
     friend class Jungle;
     friend class Ocean;

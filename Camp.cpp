@@ -42,9 +42,14 @@ void Camp::craft() {
             cout << "1. Yes" << endl;
             cout << "2. No" << endl;
             validateInt(&craftInt, 1,2);
-            if (craftInt == 1 && this->inventory->getPlastic() >= 10) {
-                this->inventory->setPlastic(-10);
-                cout << "You have " << this->inventory->getPlastic() << " plastic left." << endl;
+            if (craftInt == 1 && this->inventory->plastic >= 10) {
+                cout << "You've built 1 airtank!" << endl;
+                this->inventory->airtank++;
+                this->inventory->plastic -= 10;
+                cout << "You have " << this->inventory->plastic << " plastic left." << endl;
+            }
+            else if (craftInt == 2) {
+                cout << "You decide to craft nothing" << endl;
             }
             else {
                 cout << "You do not have enough plastic" << endl;
@@ -56,12 +61,17 @@ void Camp::craft() {
             cout << "Would you still like to build bow and arrows?" << endl;
             cout << "1. Yes" << endl;
             cout << "2. No" << endl;
-            validateInt(&craftInt, 1,2);
-            if (craftInt == 1 && this->inventory->getWood() >= 1 && this->inventory->getPlastic() >= 1) {
-                this->inventory->setPlastic(-1);
-                this->inventory->setWood(-1);
-                cout << "You have " << this->inventory->getWood() << " wood left." << endl;
-                cout << "You have " << this->inventory->getPlastic() << " plastic left." << endl;
+            validateInt(&craftInt, 1, 2);
+            if (craftInt == 1 && this->inventory->wood >= 1 && this->inventory->plastic >= 1) {
+                cout << "You built 1 set of bow and arrows!" << endl;
+                this->inventory->bowAndArrows++;
+                this->inventory->plastic--;
+                this->inventory->wood--;
+                cout << "You have " << this->inventory->wood << " wood left." << endl;
+                cout << "You have " << this->inventory->plastic << " plastic left." << endl;
+            }
+            else if (craftInt == 2) {
+                cout << "You decide to craft nothing" << endl;
             }
             else {
                 cout << "You do not have enough wood and plastic " << endl;
@@ -74,9 +84,14 @@ void Camp::craft() {
             cout << "1. Yes" << endl;
             cout << "2. No" << endl;
             validateInt(&craftInt, 1,2);
-            if (craftInt == 1 && this->inventory->getWood() >= 50) {
-                this->inventory->setWood(-50);
-                cout << "You have " << this->inventory->getWood() << " wood left." << endl;
+            if (craftInt == 1 && this->inventory->wood >= 50) {
+                cout << "You built a boat!" << endl;
+                this->inventory->boat++;
+                this->inventory->wood -= 50;
+                cout << "You have " << this->inventory->wood << " wood left." << endl;
+            }
+            else if (craftInt == 2) {
+                cout << "You decide to craft nothing" << endl;
             }
             else {
                 cout << "You do not have enough wood" << endl;
