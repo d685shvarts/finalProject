@@ -17,9 +17,10 @@ private:
         hasAirtank,
         alive;
     Space* currentLocation;
-    Inventory inventory;
+    Inventory* inventory;
 public:
     Character();
+    ~Character();
     void characterMenu();
     bool getAlive();
     void setBoat(bool boat);
@@ -28,6 +29,7 @@ public:
     void setAlive(bool alive);
     Inventory* getInventory();
     void setLocation(Space* location);
+    void printCharacterStats();
     friend class Camp;
     friend class Jungle;
     friend class Ocean;

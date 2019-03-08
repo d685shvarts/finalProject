@@ -14,14 +14,12 @@ void Jungle::spaceMenu() {
     int menuChoice;
     cout << "Please select a choice by entering the corresponding integer" << endl;
     cout << "1. Change Location" << endl;
-    cout << "2. Quit game" << endl;
+
     validateInt(&menuChoice, 1, 2);
     if (menuChoice == 1) {
         changeLocation();
     }
-    else {
-        this->character->alive = false;
-    }
+
 
 }
 

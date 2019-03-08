@@ -10,5 +10,7 @@ public:
     virtual void spaceMenu();
     void changeLocation();
     void volcanoRiddle();
+    string playerAnswer();
+    bool checkAnswer(string guess, string answer);
 };
 #endif

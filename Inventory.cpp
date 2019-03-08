@@ -5,22 +5,27 @@
 using std::endl;
 using std::cout;
 
-Inventory::Inventory() {
+Inventory::Inventory(Character* character) {
     cout << "Initializing Inventory" << endl;
     this->capacity = 50;
-    this->food = this->water = this->trap = this->torch = 
-    this->airtank = this->weight = this->wood = this->plastic =  0;
+    this->food = this->water = this->compass = this->bowAndArrows = this->boat =
+    this->airtank = this->weight = this->wood = this->plastic = this->axe =  0;
+    this->character = character;
 }
 
 void Inventory::printInventory() {
+    this->weight = this->food + this->water + this->plastic + this->wood + this->bowAndArrows
+    + this->axe + this->compass + this->airtank;
+
     cout << "Your capacity is: " << this->weight << "/" << this->capacity << endl;
     cout << "Your inventory contains: " << endl;
     cout << "Food: " << this->food << endl;
     cout << "Water: " << this->water << endl;
-    cout << "Traps: " << this->trap << endl;
-    cout << "Torches: " << this->torch << endl;
-    cout << "Wood: " << this-> wood << endl;
     cout << "Plastic: " << this-> plastic << endl;
+    cout << "Wood: " << this-> wood << endl;
+    cout << "Bow and Arrows: " << this->bowAndArrows << endl;
+    cout << "Axe: " << this->axe << endl;
+    cout << "Compass: " << this->compass << endl;
     cout << "Airtank: " << this->airtank << endl;
 }
 
@@ -30,11 +35,12 @@ void Inventory::dropItems() {
     cout << "Which items would you like to drop?" << endl;
     cout << "1. Food: " << this->food << endl;
     cout << "2. Water: " << this->water << endl;
-    cout << "3. Traps: " << this->trap << endl;
-    cout << "4. Torches: " << this->torch << endl;
-    cout << "5. Wood: " << this-> wood << endl;
-    cout << "6. Plastic: " << this-> plastic << endl;
-    cout << "7. Airtanks: " << this->airtank << endl;
+    cout << "3. Plastic: " << this->plastic << endl;
+    cout << "4. Wood: " << this->wood << endl;
+    cout << "5. Bow And Arrows: " << this->bowAndArrows << endl;
+    cout << "6. Axe: " << this->axe << endl;
+    cout << "7. Compass: " << this->compass << endl;
+    cout << "8. Airtank: " << this->airtank << endl;
     validateInt(&chooseItem, 1, 7);
 
     switch (chooseItem) {
@@ -43,7 +49,6 @@ void Inventory::dropItems() {
             validateInt(&quantity, 1, this->capacity);
             if (this->food - quantity >= 0) {
                 this->food -= quantity;
-                this->weight -= quantity;
             }
             else {
                 cout << "You cant drop that many items" << endl;
@@ -54,40 +59,37 @@ void Inventory::dropItems() {
             validateInt(&quantity, 1, this->capacity);
             if (this->water - quantity >= 0) {
                 this->water -= quantity;
-                this->weight -= quantity;
             }
             else {
                 cout << "You cant drop that many items" << endl;
             }
             break;
         case 3:
-            cout << "How many traps would you like to drop?" << endl;
+            cout << "How much plastic would you like to drop?" << endl;
             validateInt(&quantity, 1, this->capacity);
-            if (this->trap - quantity >= 0) {
-                this->trap -= quantity;
-                this->weight -= quantity;
+            if (this->plastic - quantity >= 0) {
+                this->plastic -= quantity;
             }
             else {
                 cout << "You cant drop that many items" << endl;
             }
             break;
         case 4:
-            cout << "How many torches would you like to drop?" << endl;
+            cout << "How much wood would you like to drop?" << endl;
             validateInt(&quantity, 1, this->capacity);
-            if (this->torch - quantity >= 0) {
-                this->torch -= quantity;
-                this->weight -= quantity;
+            if (this->wood - quantity >= 0) {
+                this->wood -= quantity;
             }
             else {
                 cout << "You cant drop that many items" << endl;
             }
             break;
         case 5:
-            cout << "How much wood would you like to drop?" << endl;
-            validateInt(&quantity, 1, this->capacity);
-            if (this->wood - quantity >= 0) {
-                this->wood -= quantity;
-                this->weight -= quantity;
+            cout << "Do you really want to drop your bow and arrows?" << endl;
+            validateInt(&quantity, 1, 2);
+            if (this->bowAndArrows > 0) {
+                this->bowAndArrows--;
+                this->character->hasBowAndArrows = false;
             }
             else {
                 cout << "You cant drop that many items" << endl;

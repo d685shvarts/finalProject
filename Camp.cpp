@@ -15,7 +15,6 @@ void Camp::spaceMenu() {
     cout << "Please select a choice by entering the corresponding integer" << endl;
     cout << "1. Change Location" << endl;
     cout << "2. Craft items" << endl;
-    cout << "3. Quit game" << endl;
     validateInt(&menuChoice, 1, 2);
     if (menuChoice == 1) {
         changeLocation();
@@ -24,11 +23,7 @@ void Camp::spaceMenu() {
     else if (menuChoice == 2) {
         craft();
     }
-    else {
-        this->character->alive = false;
-    }
         
-
 }
 
 void Camp::craft() {
@@ -105,7 +100,7 @@ void Camp::changeLocation() {
             this->character->currentLocation->printLocation();
             break;
         case 2:
-            if (this->character->hasAxe) {
+            if (this->character->inventory->axe > 0) {
                 this->character->currentLocation = this->right;
                 this->character->currentLocation->printLocation();
             }

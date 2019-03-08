@@ -12,18 +12,20 @@ Character::Character() {
     cout << "Initializing Character" << endl;
     this->health = 100;
     this->thirst = this->hunger = 0;
-    this->hasAxe = this->hasBoat = this->hasBowAndArrows = this->hasCompass = this->hasAirtank = false;
-    this->alive = true;
     this->currentLocation = nullptr;
-    Inventory inventory;
+    this->inventory = new Inventory(this);
 }
 
+Character::~Character() {
+    delete this->inventory;
+}
 void Character::characterMenu() {
     int menuChoice,
         inventoryChoice;
     cout << "Please select a choice by entering the corresponding integer" << endl;
     cout << "1. Access inventory" << endl;
     cout << "2. Interact with location" << endl;
+    cout << "3. Quit game" << endl;
     validateInt(&menuChoice, 1, 2);
 
     if (menuChoice == 1) {
@@ -32,14 +34,17 @@ void Character::characterMenu() {
         cout << "2. Drop items" << endl;
         validateInt(&inventoryChoice, 1, 2);
         if (inventoryChoice == 1) {
-            this->inventory.printInventory();
+            this->inventory->printInventory();
         }
         else {
-            this->inventory.dropItems();
+            this->inventory->dropItems();
         }
     }
-    else {
+    else if (menuChoice == 2) {
         this->currentLocation->spaceMenu();
+    }
+    else {
+        this->alive = false;
     }
     
 }
@@ -65,9 +70,17 @@ void Character::setAlive(bool alive) {
 }
 
 Inventory* Character::getInventory() {
-    return &inventory;
+    return inventory;
 }
 
 void Character::setLocation(Space* location) {
     this->currentLocation = location;
+}
+
+void Character::printCharacterStats() {
+    cout << endl;
+    cout << "Your health is: " << this->health << "/100" << endl;
+    cout << "You thirst is: " << this->thirst << "/100" << endl;
+    cout << "You hunger is: " << this->hunger << "/100" << endl;
+    cout << endl;
 }

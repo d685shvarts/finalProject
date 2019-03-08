@@ -36,6 +36,7 @@ int main() {
 
 
     while (character.getAlive()) {
+        character.printCharacterStats();
         character.characterMenu();
     }
     return 0;

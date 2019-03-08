@@ -14,14 +14,11 @@ void Shore::spaceMenu() {
     int menuChoice;
     cout << "Please select a choice by entering the corresponding integer" << endl;
     cout << "1. Change Location" << endl;
-    cout << "2. Quit game" << endl;
     validateInt(&menuChoice, 1, 2);
     if (menuChoice == 1) {
         changeLocation();
     }
-    else {
-        this->character->alive = false;
-    }
+
 
 }
 
@@ -35,7 +32,7 @@ void Shore::changeLocation() {
     validateInt(&location, 1, 4);
     switch (location) {
         case 1:
-            if (this->character->hasBoat && this->character->hasCompass && this->character->hasBowAndArrows) {
+            if (this->character->inventory->boat > 0 && this->character->inventory->compass > 0 && this->character->inventory->bowAndArrows > 0) {
                 this->character->currentLocation = this->top;
                 this->character->currentLocation->printLocation();
             }
@@ -45,7 +42,7 @@ void Shore::changeLocation() {
             }
             break;
         case 2:
-        if (this->character->hasAirtank) {
+        if (this->character->inventory->airtank > 0) {
             this->character->currentLocation = this->left;
             this->character->currentLocation->printLocation();
         }
