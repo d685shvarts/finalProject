@@ -46,96 +46,103 @@ void Volcano::changeLocation() {
 }
 
 void Volcano::volcanoRiddle() {
-    string answer;
+    int answer;
     cout << "You see small entrance hidden behind some brush..." << endl;
-    cin.get();
-    cin.clear();
+    cin.ignore();
     cout << "You peek inside the entrance and see a dark unlit tunnel.." << endl;
-    cin.get();
-    cin.clear();
+    cin.ignore();
     cout << "You crawl through the entrance and begin carefully feeling your way through the tunnel..." << endl;
-    cin.get();
-    cin.clear();
+    cin.ignore();
     cout << "Suddenly, the ground gives way under your feet and you plummet into darkness!" << endl;
-    cin.get();
-    cin.clear();
+    cin.ignore();
     cout << "You hit your head during the fall and lose conciousness..." << endl;
-    cin.get();
-    cin.clear();
+    cin.ignore();
     cout << "You awaken to a massive being hovering above you!" << endl;
-    cin.get();
-    cin.clear();
+    cin.ignore();
     cout << "Spirit: \"It has been a long time since I've met one of your kind.\"" << endl;
-    cin.get();
-    cin.clear();
+    cin.ignore();
     cout << "Spirit: \"It's been awfully lonely down here, wont you play a game of riddles with me?\"" << endl;
-    cin.get();
-    cin.clear();
+    cin.ignore();
     cout << "Spirit: \"I'll give you a handsome reward if you succeed!\"" << endl;
-    cin.get();
-    cin.clear();
+    cin.ignore();
     cout << "Spirit: \"Let's begin!\"" << endl;
-    cin.get();
-    cin.clear();
+    cin.ignore();
     cout << "\"What has roots as nobody sees, " << endl;
     cout << "Is taller that trees," << endl;
     cout << "Up, up it goes," << endl;
     cout << "and yet never grows?\"" << endl;
-    answer = playerAnswer();
-    if (checkAnswer(answer, "mountain") || checkAnswer(answer, "Mountain")) {
-        cout << "\"For answering my riddle correctly, I'll give you this ancient axe!\"" << endl;
-        this->inventory->axe++;
-        this->character->hasAxe = true;
-        cout << "You recieve a magical axe from the spirit." << endl;
-        cout << "You can use this axe to enter new areas and get new items!" << endl;
+    cout << endl;
+    cout << "Enter an integer corresponding to your answer" << endl;
+    cout << "1. Tree" << endl;
+    cout << "2. Mountain" << endl;
+    cout << "3. Cloud" << endl;
+    cout << "4. Bird" << endl;
+    validateInt(&answer, 1, 4);
+    if (answer == 2) {
+        cout << endl;
+        cout << "Spirit: \"Correct! You're more clever than you look!" << endl;
+        cout << endl;
     }
     else {
-        cout << "\"You foolish mortal, leave me!\"" << endl;
+        cout << endl;
+        cout << "Spirit: \"Wrong! You foolish mortal, leave me!\"" << endl;
         this->character->health -= 50;
         cout << "The spirit banishes you from the volcano and deals 50 damage to you" << endl;
+        cout << endl;
         return;
     }
-
-
-}
-
-
-/***************************************************************************************************************
-** Function name: checkString function
-** Description: Prompts user to input a string and then returns that string to function call. Will be used to
-** provide main with a string that will be reversed
-*********************************************************************************************************/
-string Volcano::playerAnswer() {
-    cout << "Please enter your answer" << endl;
-	string input = "";
-	//While string input has a length of 0, reprompt user to enter a string
-	while (input.length() == 0) {
-		getline(cin, input);
-	}
-	//then return string to function call
-	return input;
-}
-
-bool Volcano::checkAnswer(string guess, string answer) {
-    string guessAgain = " ";
-    int guessNum = 2;
-    if (guess == answer) {
-        cout << "Correct! You're wiser than you look!" << endl;
-        return true;
+    cout << "Spirit: \"Let's try something a little harder...\"" << endl;
+    cout << "\"Thirty white horses on a red hill, " << endl;
+    cout << "First they champ, " << endl;
+    cout << "Then they stamp, " << endl;
+    cout << "Then they stand still.\"" << endl;
+    cout << endl;
+    cout << "Enter an integer corresponding to your answer" << endl;
+    cout << "1. Daisies" << endl;
+    cout << "2. Rain" << endl;
+    cout << "3. Snow" << endl;
+    cout << "4. Teeth" << endl;
+    validateInt(&answer, 1, 4);
+    if (answer == 4) {
+        cout << endl;
+        cout << "Spirit: \"Correct again! How wise!\"" << endl;
+        cout << endl;
     }
     else {
-        while (guessAgain != answer && guessNum > 0) {
-            cout << "Wrong! You have " << guessNum << " tries remaining!" << endl;
-            guessAgain = playerAnswer();
-            if (guessAgain == answer) {
-                cout << "Correct! You're wiser than you look!" << endl;
-                return true;
-            }
-            guessNum--;
-        }
+        cout << endl;
+        cout << "Spirit: \"Wrong! You foolish mortal, leave me!\"" << endl;
+        this->character->health -= 50;
+        cout << "The spirit banishes you from the volcano and deals 50 damage to you" << endl;
+        cout << endl;
+        return;
     }
-    cout << "You've failed my game of riddles!" << endl;
-    return false;
-
+    cout << "Spirit: \"I'll have to give you my hardest riddle yet!" << endl;
+    cout << "\"Voiceless it cries, " << endl;
+    cout << "Wingless flutters," << endl;
+    cout << "toothless bites," << endl;
+    cout << "Mouthless mutters.\"" << endl;
+    cout << endl;
+    cout << "Enter an integer corresponding to your answer" << endl;
+    cout << "1. Time" << endl;
+    cout << "2. Echo" << endl;
+    cout << "3. Wind" << endl;
+    cout << "4. Reflection" << endl;
+    validateInt(&answer, 1, 4);
+    if (answer == 3) {
+        cout << endl;
+        cout << "Spirit: \"No one's ever managed to answer all of my riddles!\"" << endl;
+        cout << "\"For winning my riddle game, I'll give you this ancient axe!\"" << endl;
+        this->inventory->axe++;
+        cout << "You recieve a magical axe from the spirit." << endl;
+        cout << "You can use this axe to enter new areas and get new items!" << endl;
+        cout << endl;
+    }
+    else {
+        cout << endl;
+        cout << "Spirit: \"Wrong! You foolish mortal, leave me!\"" << endl;
+        this->character->health -= 50;
+        cout << "The spirit banishes you from the volcano and deals 50 damage to you" << endl;
+        cout << endl;
+        return;
+    }
 }
-

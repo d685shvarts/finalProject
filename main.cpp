@@ -36,8 +36,8 @@ int main() {
 
 
     while (character.getAlive()) {
-        character.printCharacterStats();
         character.characterMenu();
+        character.ageCharacter();
     }
     return 0;
 }

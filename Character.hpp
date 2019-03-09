@@ -4,6 +4,7 @@
 #include "Space.hpp"
 
 class Space;
+class Inventory;
 
 class Character {
 private:

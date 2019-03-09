@@ -1,6 +1,8 @@
 #ifndef INVENTORY_HPP
 #define INVENTORY_HPP
 #include "Character.hpp"
+class Inventory;
+class Character;
 class Inventory {
 protected:
     int capacity,
@@ -15,7 +17,6 @@ protected:
         axe,
         bowAndArrows,
         compass,
-        boat,
         airtank;
     Character* character;
 public:

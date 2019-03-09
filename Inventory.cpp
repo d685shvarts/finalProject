@@ -150,7 +150,7 @@ void Inventory::dropItems() {
 }
 
 void Inventory::exceedCapacity() {
-    if (this->weight > this->capacity){
+    while (this->weight > this->capacity){
         cout << "You are holding too many items, you must drop some" << endl;
         dropItems();
     }
