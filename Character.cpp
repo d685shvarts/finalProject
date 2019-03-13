@@ -22,32 +22,20 @@ Character::~Character() {
 }
 
 void Character::characterMenu() {
+    this->inventory->printInventory();
+    cout << endl;
     int menuChoice,
         inventoryChoice;
     cout << "Please select a choice by entering the corresponding integer" << endl;
-    cout << "1. Access inventory" << endl;
-    cout << "2. Interact with location" << endl;
-    cout << "3. Quit game" << endl;
+    cout << "1. Interact with location" << endl;
+    cout << "2. Quit game" << endl;
     validateInt(&menuChoice, 1, 3);
     if (menuChoice == 1) {
-        cout << "What would you like to do?" << endl;
-        cout << "1. Print inventory" << endl;
-        cout << "2. Drop items" << endl;
-        validateInt(&inventoryChoice, 1, 2);
-        if (inventoryChoice == 1) {
-            this->inventory->printInventory();
-        }
-        else {
-            this->inventory->dropItems();
-        }
-    }
-    else if (menuChoice == 2) {
         this->currentLocation->spaceMenu();
     }
     else {
         this->alive = false;
     }
-    
 }
 
 bool Character::getAlive() {
@@ -75,7 +63,7 @@ void Character::printCharacterStats() {
 }
 
 void Character::ageCharacter() {
-    if (this->health < 0) {
+    if (this->health <= 0) {
         cout << "Your health has fallen below 0, you have died!" << endl;
         this->alive = false;
         return;
@@ -122,11 +110,17 @@ void Character::ageCharacter() {
             }
         }
 
-        if (this->health < 0) {
+        if (this->health <= 0) {
             cout << "Your health has fallen below 0! You have died!" << endl;
             this->alive = false;
         }
     }
+    
 
     printCharacterStats();
+}
+
+void Character::interactInventory() {
+    this->inventory->printInventory();
+    this->inventory->exceedCapacity();
 }

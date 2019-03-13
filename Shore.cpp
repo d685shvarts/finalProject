@@ -14,9 +14,13 @@ void Shore::spaceMenu() {
     int menuChoice;
     cout << "Please select a choice by entering the corresponding integer" << endl;
     cout << "1. Change Location" << endl;
+    cout << "2. Scavenge for supplies" << endl;
     validateInt(&menuChoice, 1, 2);
     if (menuChoice == 1) {
         changeLocation();
+    }
+    else {
+        scavengeSupplies();
     }
 
 
@@ -57,5 +61,25 @@ void Shore::changeLocation() {
         case 4:
             cout << "You stay where you are" << endl;
             break;
+    }
+}
+
+void Shore::scavengeSupplies() {
+    int random = 1 + rand() % 100;
+    int supplies = 1 + rand() % 10;
+
+    cout << "Random is: " << random << endl;
+
+    if (random > 0 && random < 34) {
+        cout << "You find " << supplies << " pieces of plastic on the shore!" << endl;
+        this->character->inventory->plastic += supplies;
+    }
+    else if (random >= 34 && random < 67) {
+        cout << "You find " << supplies << " bottles of water on the shore!" << endl;
+        this->character->inventory->water += supplies;
+    }
+    else {
+        cout << "You find " << supplies << " tins of food on the shore!" << endl;
+        this->character->inventory->food += supplies;
     }
 }

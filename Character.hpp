@@ -19,14 +19,12 @@ public:
     ~Character();
     void characterMenu();
     bool getAlive();
-    void setBoat(bool boat);
-    void setAxe(bool axe);
-    void setCompass(bool compass);
     void setAlive(bool alive);
     Inventory* getInventory();
     void setLocation(Space* location);
     void printCharacterStats();
     void ageCharacter();
+    void interactInventory();
     friend class Camp;
     friend class Jungle;
     friend class Ocean;

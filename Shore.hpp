@@ -8,6 +8,7 @@ class Shore : public Space {
 public:
     Shore(Inventory* inventory, Character* character);
     virtual void spaceMenu();
+    void scavengeSupplies();
     void changeLocation();
 };
 #endif

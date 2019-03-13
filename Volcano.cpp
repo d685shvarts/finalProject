@@ -3,7 +3,9 @@
 #include "Character.hpp"
 #include "Menu.hpp"
 #include <iostream>
+#include <limits>
 
+using std::streamsize;
 using std::endl;
 using std::cout;
 using std::cin;
@@ -47,26 +49,27 @@ void Volcano::changeLocation() {
 
 void Volcano::volcanoRiddle() {
     int answer;
+    cout << "Press enter to iterate through this level. " << endl;
     cout << "You see small entrance hidden behind some brush..." << endl;
-    cin.ignore();
+    cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     cout << "You peek inside the entrance and see a dark unlit tunnel.." << endl;
-    cin.ignore();
+    cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     cout << "You crawl through the entrance and begin carefully feeling your way through the tunnel..." << endl;
-    cin.ignore();
+    cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     cout << "Suddenly, the ground gives way under your feet and you plummet into darkness!" << endl;
-    cin.ignore();
+    cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     cout << "You hit your head during the fall and lose conciousness..." << endl;
-    cin.ignore();
+    cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     cout << "You awaken to a massive being hovering above you!" << endl;
-    cin.ignore();
+    cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     cout << "Spirit: \"It has been a long time since I've met one of your kind.\"" << endl;
-    cin.ignore();
+    cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     cout << "Spirit: \"It's been awfully lonely down here, wont you play a game of riddles with me?\"" << endl;
-    cin.ignore();
+    cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     cout << "Spirit: \"I'll give you a handsome reward if you succeed!\"" << endl;
-    cin.ignore();
+    cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     cout << "Spirit: \"Let's begin!\"" << endl;
-    cin.ignore();
+    cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     cout << "\"What has roots as nobody sees, " << endl;
     cout << "Is taller that trees," << endl;
     cout << "Up, up it goes," << endl;
@@ -140,7 +143,7 @@ void Volcano::volcanoRiddle() {
     else {
         cout << endl;
         cout << "Spirit: \"Wrong! You foolish mortal, leave me!\"" << endl;
-        this->character->health -= 50;
+        this->character->health -= 70;
         cout << "The spirit banishes you from the volcano and deals 50 damage to you" << endl;
         cout << endl;
         return;

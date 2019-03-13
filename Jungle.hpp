@@ -12,5 +12,6 @@ public:
     Jungle(Inventory* inventory, Character* character);
     virtual void spaceMenu();
     void changeLocation();
+    void chopWood();
 };
 #endif

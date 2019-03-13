@@ -37,7 +37,10 @@ int main() {
 
     while (character.getAlive()) {
         character.characterMenu();
-        character.ageCharacter();
+        if (character.getAlive()) {
+            character.ageCharacter();
+            character.interactInventory();
+        }
     }
     return 0;
 }
