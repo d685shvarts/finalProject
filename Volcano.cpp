@@ -49,7 +49,7 @@ void Volcano::changeLocation() {
 
 void Volcano::volcanoRiddle() {
     int answer;
-    cout << "Press enter to iterate through this level. " << endl;
+    cout << "Press enter to iterate through this level. \n" << endl;
     cout << "You see small entrance hidden behind some brush..." << endl;
     cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     cout << "You peek inside the entrance and see a dark unlit tunnel.." << endl;
@@ -138,6 +138,7 @@ void Volcano::volcanoRiddle() {
         this->inventory->axe++;
         cout << "You recieve a magical axe from the spirit." << endl;
         cout << "You can use this axe to enter new areas and get new items!" << endl;
+        cout << "The spirit escorts you outside the volcano" << endl;
         cout << endl;
     }
     else {

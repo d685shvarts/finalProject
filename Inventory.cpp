@@ -7,7 +7,7 @@ using std::cout;
 
 Inventory::Inventory(Character* character) {
     cout << "Initializing Inventory" << endl;
-    this->capacity = 50;
+    this->capacity = 100;
     this->food = this->water = this->compass = this->bowAndArrows = this->boat =
     this->airtank = this->weight = this->wood = this->plastic = this->axe =  0;
     this->character = character;
@@ -15,8 +15,9 @@ Inventory::Inventory(Character* character) {
 
 void Inventory::printInventory() {
     
-
-    cout << "Your capacity is: " << this->weight << "/" << this->capacity << endl;
+    this->weight = this->food + this->water + this->plastic + this->wood + this->bowAndArrows
+    + this->axe + this->compass + this->airtank + this->boat;
+    cout << "Your inventory is: " << this->weight << "/" << this->capacity << " full" << endl;
     cout << "Your inventory contains: " << endl;
     cout << "Food: " << this->food << endl;
     cout << "Water: " << this->water << endl;
@@ -155,6 +156,7 @@ void Inventory::exceedCapacity() {
     this->weight = this->food + this->water + this->plastic + this->wood + this->bowAndArrows
     + this->axe + this->compass + this->airtank + this->boat;
     while (this->weight > this->capacity){
+        cout << "Your inventory is: " << this->weight << "/" << this->capacity << " full" << endl;
         cout << "You are holding too many items, you must drop some" << endl;
         dropItems();
     }

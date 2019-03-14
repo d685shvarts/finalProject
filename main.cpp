@@ -6,6 +6,10 @@
 #include "Shore.hpp"
 #include "Shipwreck.hpp"
 #include "Ocean.hpp"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 int main() {
     Character character;
@@ -35,12 +39,17 @@ int main() {
 
 
 
-    while (character.getAlive()) {
+    while (character.getAlive() && character.getSpace() != "Ocean") {
         character.characterMenu();
         if (character.getAlive()) {
             character.ageCharacter();
             character.interactInventory();
         }
     }
+
+    if (character.getAlive()) {
+        cout << "\nYour character has died. Game Over!" << endl;
+    }
+
     return 0;
 }

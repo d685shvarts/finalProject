@@ -26,6 +26,7 @@ public:
     void exceedCapacity();
     friend class Character;
     friend class Volcano;
+    friend class Jungle;
     friend class Camp;
     friend class Shipwreck;
     friend class Shore;

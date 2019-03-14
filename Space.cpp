@@ -48,3 +48,7 @@ void Space::printLocation() {
     }
 
 }
+
+string Space::getName() {
+    return this->name;
+}

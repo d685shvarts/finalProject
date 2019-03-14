@@ -25,6 +25,7 @@ public:
     void printCharacterStats();
     void ageCharacter();
     void interactInventory();
+    string getSpace();
     friend class Camp;
     friend class Jungle;
     friend class Ocean;

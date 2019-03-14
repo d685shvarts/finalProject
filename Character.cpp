@@ -3,6 +3,7 @@
 #include "Menu.hpp"
 #include <iostream>
 
+using std::string;
 using std::endl;
 using std::cout;
 
@@ -22,7 +23,6 @@ Character::~Character() {
 }
 
 void Character::characterMenu() {
-    this->inventory->printInventory();
     cout << endl;
     int menuChoice,
         inventoryChoice;
@@ -123,4 +123,8 @@ void Character::ageCharacter() {
 void Character::interactInventory() {
     this->inventory->printInventory();
     this->inventory->exceedCapacity();
+}
+
+string Character::getSpace() {
+    return this->currentLocation->getName();
 }

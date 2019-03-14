@@ -42,7 +42,7 @@ void Shore::changeLocation() {
             }
             else {
                 cout << "The ocean is a dangerous place, you'll need a boat" << endl;
-                cout << "a compass and a bow and arrow to go here" << endl;
+                cout << "a compass and bow and arrows to go here" << endl;
             }
             break;
         case 2:

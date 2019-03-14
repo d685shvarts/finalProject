@@ -23,6 +23,7 @@ public:
     void addBottom(Space* bottom );
     void addLeft(Space* left);
     void addRight(Space* right);
+    string getName();
     virtual void spaceMenu() = 0;
     void printLocation();
 
