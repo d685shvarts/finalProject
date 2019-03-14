@@ -8,5 +8,6 @@ class Ocean : public Space {
 public:
     Ocean(Inventory* inventory, Character* character);
     virtual void spaceMenu();
+    void bossBattle();
 };
 #endif

@@ -20,3 +20,7 @@ void Ocean::spaceMenu() {
     }
 
 }
+
+void Ocean::bossBattle() {
+    
+}

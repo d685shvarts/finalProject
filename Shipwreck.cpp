@@ -24,6 +24,9 @@ void Shipwreck::spaceMenu() {
     if (menuChoice == 1) {
         changeLocation();
     }
+    else {
+        this->dive();
+    }
 
 }
 
@@ -59,7 +62,7 @@ void Shipwreck::dive() {
     cout << "3. A broken window near the starboard" << endl;
     cout << "4. A small crack in the hull of the ship" << endl;
     validateInt(&answer, 1, 4);
-    while (answer != 4 && this->checkAirtank()) {
+    while (answer != 2 && this->checkAirtank()) {
         switch (answer) {
         case 1:
             cout << "You swim up to the hatch and try to undo it..." << endl;
@@ -202,7 +205,9 @@ void Shipwreck::dive() {
         cout << "You find a compass!" << endl;
         cout << "It's no treasure but it'll be pretty useful to get off this island!" << endl;
         this->character->inventory->compass++;
+        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         cout << "With your remaining air you swim to surface of the shipwreck" << endl;
+        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     }
 
     if (!checkAirtank()) {

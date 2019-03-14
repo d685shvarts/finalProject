@@ -7,7 +7,9 @@
 #include "Shipwreck.hpp"
 #include "Ocean.hpp"
 #include <iostream>
+#include <string>
 
+using std::string;
 using std::cout;
 using std::endl;
 
@@ -39,16 +41,19 @@ int main() {
 
 
 
-    while (character.getAlive() && character.getSpace() != "Ocean") {
+    while (character.getAlive() && !character.bossFight()) {
         character.characterMenu();
-        if (character.getAlive()) {
+        if (character.getAlive() && !character.bossFight()) {
             character.ageCharacter();
             character.interactInventory();
         }
     }
 
-    if (character.getAlive()) {
+    if (!character.getAlive()) {
         cout << "\nYour character has died. Game Over!" << endl;
+    }
+    if (character.getAlive() && character.bossFight()) {
+
     }
 
     return 0;

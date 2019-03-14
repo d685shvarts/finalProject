@@ -2,6 +2,7 @@
 #include "Inventory.hpp"
 #include "Menu.hpp"
 #include <iostream>
+#include <string>
 
 using std::string;
 using std::endl;
@@ -125,6 +126,12 @@ void Character::interactInventory() {
     this->inventory->exceedCapacity();
 }
 
-string Character::getSpace() {
-    return this->currentLocation->getName();
+
+bool Character::bossFight() {
+    if (this->currentLocation->getName() == "Ocean") {
+        return true;
+    }
+    else {
+        return false;
+    }
 }

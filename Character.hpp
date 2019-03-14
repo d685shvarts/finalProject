@@ -2,6 +2,9 @@
 #define CHARACTER_HPP
 #include "Inventory.hpp"
 #include "Space.hpp"
+#include <string>
+
+using std::string;
 
 class Space;
 class Inventory;
@@ -25,7 +28,7 @@ public:
     void printCharacterStats();
     void ageCharacter();
     void interactInventory();
-    string getSpace();
+    bool bossFight();
     friend class Camp;
     friend class Jungle;
     friend class Ocean;
