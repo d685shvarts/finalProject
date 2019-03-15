@@ -8,7 +8,10 @@
 #include "Ocean.hpp"
 #include <iostream>
 #include <string>
+#include <limits>
 
+using std::streamsize;
+using std::cin;
 using std::string;
 using std::cout;
 using std::endl;
@@ -41,9 +44,9 @@ int main() {
 
 
 
-    while (character.getAlive() && !character.bossFight()) {
+    while (character.getAlive() && !character.getWonGame()) {
         character.characterMenu();
-        if (character.getAlive() && !character.bossFight()) {
+        if (character.getAlive() && !character.getWonGame()) {
             character.ageCharacter();
             character.interactInventory();
         }
@@ -52,8 +55,15 @@ int main() {
     if (!character.getAlive()) {
         cout << "\nYour character has died. Game Over!" << endl;
     }
-    if (character.getAlive() && character.bossFight()) {
-
+    if (character.getAlive() && character.getWonGame()) {
+        cout << "With the Kraken slain, you sail away towards the sun!" << endl;
+        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+        cout << "You arrive to your village just before sunset" << endl;
+        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+        cout << "Your village rejoices to see you and hails you as a hero for slaying the Kraken!" << endl;
+        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+        cout << "Congratulations on winning the game! Thanks for playing!" << endl;
+        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     }
 
     return 0;

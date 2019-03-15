@@ -85,6 +85,7 @@ void Volcano::volcanoRiddle() {
         cout << endl;
         cout << "Spirit: \"Correct! You're more clever than you look!" << endl;
         cout << endl;
+        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     }
     else {
         cout << endl;
@@ -92,6 +93,7 @@ void Volcano::volcanoRiddle() {
         this->character->health -= 50;
         cout << "The spirit banishes you from the volcano and deals 50 damage to you" << endl;
         cout << endl;
+        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         return;
     }
     cout << "Spirit: \"Let's try something a little harder...\"" << endl;
@@ -110,6 +112,7 @@ void Volcano::volcanoRiddle() {
         cout << endl;
         cout << "Spirit: \"Correct again! How wise!\"" << endl;
         cout << endl;
+        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     }
     else {
         cout << endl;
@@ -117,6 +120,7 @@ void Volcano::volcanoRiddle() {
         this->character->health -= 50;
         cout << "The spirit banishes you from the volcano and deals 50 damage to you" << endl;
         cout << endl;
+        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         return;
     }
     cout << "Spirit: \"I'll have to give you my hardest riddle yet!" << endl;
@@ -140,6 +144,7 @@ void Volcano::volcanoRiddle() {
         cout << "You can use this axe to enter new areas and get new items!" << endl;
         cout << "The spirit escorts you outside the volcano" << endl;
         cout << endl;
+        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     }
     else {
         cout << endl;
@@ -147,6 +152,7 @@ void Volcano::volcanoRiddle() {
         this->character->health -= 70;
         cout << "The spirit banishes you from the volcano and deals 50 damage to you" << endl;
         cout << endl;
+        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         return;
     }
 }

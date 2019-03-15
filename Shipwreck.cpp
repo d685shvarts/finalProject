@@ -96,8 +96,10 @@ void Shipwreck::dive() {
             validateInt(&answer, 1, 4);
         }
     }
-    this->airSupply -= 10;
-    this->getAirtank();
+    if (checkAirtank()) {
+        this->airSupply -= 10;
+        this->getAirtank();
+    }
     if (this->checkAirtank()) {
         cout << "You swim up to chained door and give it a tug..." << endl;
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
@@ -132,6 +134,7 @@ void Shipwreck::dive() {
             cout << "It's too heavy, it wont budge!" << endl;
             break;
         }
+
         this->airSupply -= 10;
         this->getAirtank();
         
@@ -146,8 +149,10 @@ void Shipwreck::dive() {
             validateInt(&answer, 1, 4);
         }
     }
-    this->airSupply -= 10;
-    this->getAirtank();
+    if (checkAirtank()) {
+        this->airSupply -= 10;
+        this->getAirtank();
+    }
     if (this->checkAirtank()) {
         cout << "You swim up to Captain's quarters and try to open the door..." << endl;
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
@@ -195,8 +200,10 @@ void Shipwreck::dive() {
             validateInt(&answer, 1, 4);
         }
     }
-    this->airSupply -= 10;
-    this->getAirtank();
+    if (checkAirtank()) {
+        this->airSupply -= 10;
+        this->getAirtank();
+    }
     if (checkAirtank()) {
         cout << "You try to remove the broken lock..." << endl;
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');

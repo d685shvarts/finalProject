@@ -14,7 +14,8 @@ private:
     int health,
         thirst,
         hunger;
-    bool alive;
+    bool alive,
+        wonGame;
     Space* currentLocation;
     Inventory* inventory;
 public:
@@ -28,7 +29,7 @@ public:
     void printCharacterStats();
     void ageCharacter();
     void interactInventory();
-    bool bossFight();
+    bool getWonGame();
     friend class Camp;
     friend class Jungle;
     friend class Ocean;

@@ -16,6 +16,7 @@ Character::Character() {
     this->thirst = this->hunger = 0;
     this->currentLocation = nullptr;
     this->alive = true;
+    this->wonGame = false;
     this->inventory = new Inventory(this);
 }
 
@@ -127,11 +128,6 @@ void Character::interactInventory() {
 }
 
 
-bool Character::bossFight() {
-    if (this->currentLocation->getName() == "Ocean") {
-        return true;
-    }
-    else {
-        return false;
-    }
+bool Character::getWonGame() {
+    return this->wonGame;
 }

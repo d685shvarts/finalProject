@@ -27,6 +27,7 @@ public:
     friend class Character;
     friend class Volcano;
     friend class Jungle;
+    friend class Ocean;
     friend class Camp;
     friend class Shipwreck;
     friend class Shore;
