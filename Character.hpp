@@ -30,6 +30,7 @@ public:
     void ageCharacter();
     void interactInventory();
     bool getWonGame();
+    void printLocation();
     friend class Camp;
     friend class Jungle;
     friend class Ocean;

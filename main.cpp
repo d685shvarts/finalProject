@@ -43,7 +43,8 @@ int main() {
 
 
 
-
+    character.printCharacterStats();
+    character.printLocation();
     while (character.getAlive() && !character.getWonGame()) {
         character.characterMenu();
         if (character.getAlive() && !character.getWonGame()) {

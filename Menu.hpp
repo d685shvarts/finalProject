@@ -10,8 +10,6 @@
 #include <string>
 using std::string;
 
-//Function to allow user to queue buffer program, stack palindrome program or exit
-int menu();
 //Integer validating function
 void validateInt(int* input, int lowerBound, int upperBound);
 

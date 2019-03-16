@@ -11,8 +11,10 @@
 #include "Character.hpp"
 #include <string>
 #include <iostream>
+#include <limits>
 
-
+using std::streamsize;
+using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
@@ -78,22 +80,11 @@ void Space::addRight(Space* right) {
 void Space::printLocation() {
     //Output players location and surrounding spaces if they exist
     cout << "Your current location is: " << this->name << endl;
-    if (this->right != nullptr) {
-        cout << "Right: " << this->right->name << endl;
-    }
-    if (this->left != nullptr) {
-        cout << "Left: " << this->left->name << endl;
-    }
-    if (this->top != nullptr) {
-        cout << "Top: " << this->top->name << endl;
-    }
-    if (this->bottom != nullptr) {
-        cout << "Bottom: " << this->bottom->name << endl;
-    }
+
     cout << endl;
     //Print visual representation of the map
     printMap();
-
+    cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
 }
 
 /*********************************************************************************************************************************

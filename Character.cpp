@@ -3,7 +3,10 @@
 #include "Menu.hpp"
 #include <iostream>
 #include <string>
+#include <limits>
 
+using std::streamsize;
+using std::cin;
 using std::string;
 using std::endl;
 using std::cout;
@@ -17,7 +20,7 @@ Character::Character() {
     this->currentLocation = nullptr;
     this->alive = true;
     this->wonGame = false;
-    this->inventory = new Inventory(this);
+    this->inventory = new Inventory();
 }
 
 Character::~Character() {
@@ -62,6 +65,7 @@ void Character::printCharacterStats() {
     cout << "You thirst is: " << this->thirst << "/100" << endl;
     cout << "You hunger is: " << this->hunger << "/100" << endl;
     cout << endl;
+    cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
 }
 
 void Character::ageCharacter() {
@@ -130,4 +134,8 @@ void Character::interactInventory() {
 
 bool Character::getWonGame() {
     return this->wonGame;
+}
+
+void Character::printLocation() {
+    this->currentLocation->printLocation();
 }

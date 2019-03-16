@@ -20,7 +20,7 @@ using std::cin;
 
 /*********************************************************************************************************************************
 ** Function name: Volcano constructor
-** Description: Constructor will initalize shore objects name and also pass the character and inventory object pointers the base 
+** Description: Constructor will initalize volcano objects name and also pass the character and inventory object pointers the base 
 ** space class to initialize member variables.
 ***********************************************************************************************************************************/
 Volcano::Volcano(Inventory* inventory, Character* character) : Space(inventory, character) {
@@ -30,7 +30,7 @@ Volcano::Volcano(Inventory* inventory, Character* character) : Space(inventory, 
 /*********************************************************************************************************************************
 ** Function name: spaceMenu method
 ** Description: Overriden method from base class, which dispays options user has to interact with current space. Prompts user to either
-** change their location on the island or interact with current space by searching for supplies and then run functions to accomplish users
+** change their location on the island or interact with current space by entering volcano and then run functions to accomplish users
 ** choice
 ***********************************************************************************************************************************/
 void Volcano::spaceMenu() {
@@ -81,8 +81,15 @@ void Volcano::changeLocation() {
     }
 }
 
+/*********************************************************************************************************************************
+** Function name: volcanoRiddle method
+** Description: Method that will engage the user in a game of riddles in order to gain an item necessry to win game. User will be 
+** given a riddle and then a set of possible answers to choose from. User's answer will be validated, if incorrect they will take damage
+** and exit method, otherwise they will continue untill they win.
+***********************************************************************************************************************************/
 void Volcano::volcanoRiddle() {
     int answer;
+    //Print narrative on screen
     cout << "Press enter to iterate through this level. \n" << endl;
     cout << "You see small entrance hidden behind some brush..." << endl;
     cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
@@ -104,23 +111,28 @@ void Volcano::volcanoRiddle() {
     cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     cout << "Spirit: \"Let's begin!\"" << endl;
     cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+    //Print riddle on screen
     cout << "\"What has roots as nobody sees, " << endl;
     cout << "Is taller that trees," << endl;
     cout << "Up, up it goes," << endl;
     cout << "and yet never grows?\"" << endl;
     cout << endl;
+    //Print answer choices on screen
     cout << "Enter an integer corresponding to your answer" << endl;
     cout << "1. Tree" << endl;
     cout << "2. Mountain" << endl;
     cout << "3. Cloud" << endl;
     cout << "4. Bird" << endl;
+    //Validate user input
     validateInt(&answer, 1, 4);
+    //If correct input, notify user and continue
     if (answer == 2) {
         cout << endl;
         cout << "Spirit: \"Correct! You're more clever than you look!" << endl;
         cout << endl;
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     }
+    //Otherwise tell user their input was incorrect, lower their health and exit method
     else {
         cout << endl;
         cout << "Spirit: \"Wrong! You foolish mortal, leave me!\"" << endl;
@@ -130,24 +142,29 @@ void Volcano::volcanoRiddle() {
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         return;
     }
+    //Print riddle on screen
     cout << "Spirit: \"Let's try something a little harder...\"" << endl;
     cout << "\"Thirty white horses on a red hill, " << endl;
     cout << "First they champ, " << endl;
     cout << "Then they stamp, " << endl;
     cout << "Then they stand still.\"" << endl;
     cout << endl;
+    //Print answer choices on screen
     cout << "Enter an integer corresponding to your answer" << endl;
     cout << "1. Daisies" << endl;
     cout << "2. Rain" << endl;
     cout << "3. Snow" << endl;
     cout << "4. Teeth" << endl;
+    //Validate user input
     validateInt(&answer, 1, 4);
+    //If correct input, notify user and continue
     if (answer == 4) {
         cout << endl;
         cout << "Spirit: \"Correct again! How wise!\"" << endl;
         cout << endl;
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     }
+    //Otherwise tell user their input was incorrect, lower their health and exit method
     else {
         cout << endl;
         cout << "Spirit: \"Wrong! You foolish mortal, leave me!\"" << endl;
@@ -157,18 +174,22 @@ void Volcano::volcanoRiddle() {
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         return;
     }
+    //Print riddle on screen
     cout << "Spirit: \"I'll have to give you my hardest riddle yet!" << endl;
     cout << "\"Voiceless it cries, " << endl;
     cout << "Wingless flutters," << endl;
     cout << "toothless bites," << endl;
     cout << "Mouthless mutters.\"" << endl;
     cout << endl;
+    //Print answer choices on screen
     cout << "Enter an integer corresponding to your answer" << endl;
     cout << "1. Time" << endl;
     cout << "2. Echo" << endl;
     cout << "3. Wind" << endl;
     cout << "4. Reflection" << endl;
+    //Validate user input
     validateInt(&answer, 1, 4);
+    //If correct input, notify user and give them an axe 
     if (answer == 3) {
         cout << endl;
         cout << "Spirit: \"No one's ever managed to answer all of my riddles!\"" << endl;
@@ -180,10 +201,11 @@ void Volcano::volcanoRiddle() {
         cout << endl;
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
     }
+    //Otherwise tell user their input was incorrect, lower their health and exit method
     else {
         cout << endl;
         cout << "Spirit: \"Wrong! You foolish mortal, leave me!\"" << endl;
-        this->character->health -= 70;
+        this->character->health -= 50;
         cout << "The spirit banishes you from the volcano and deals 50 damage to you" << endl;
         cout << endl;
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');

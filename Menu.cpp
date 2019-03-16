@@ -2,8 +2,7 @@
 ** Program name: Menu functions implementation file
 ** Author: Daniel Shvarts
 ** Date: 03/10/2019
-** Description: Defines menu function that will prompt user to select queue buffer program or stack palindrome program.
-** Also contains a integer input validating function that will make sure any input integer within defined bounds, a 
+** Description: Contains a integer input validating function that will make sure any input integer within defined bounds, a 
 ** string validating function which will be used to input a string input for palindrome
 *********************************************************************************************************/
 #include "Menu.hpp"
@@ -17,22 +16,6 @@ using std::string;
 using std::streamsize;
 using std::numeric_limits;
 
-/***************************************************************************************************************
-** Function name: menu function
-** Description: Function used to prompt user to select either queue buffer program, stack palindrome program,
-** or exit program, and then validate input is within bounds. Will return integer choice to main
-*********************************************************************************************************/
-int menu() {
-    int menuInput;
-    //Prompt user to select choice
-    cout << "Please enter one of the following integers." << endl;
-    cout << "1. Run buffer queue" << endl;
-    cout << "2. Run stack palindrome" << endl;
-    cout << "3. Exit" << endl;
-    //Validate that input is within bounds
-    validateInt(&menuInput, 1, 3);
-    return menuInput;
-}
 /***************************************************************************************************************
 ** Function name: validateInput function
 ** Description: Function will be used to make sure that user input is within defined bounds, and will not crash
