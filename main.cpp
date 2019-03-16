@@ -48,6 +48,8 @@ int main() {
         character.characterMenu();
         if (character.getAlive() && !character.getWonGame()) {
             character.ageCharacter();
+        }
+        if (character.getAlive() && !character.getWonGame()) {
             character.interactInventory();
         }
     }

@@ -65,8 +65,12 @@ void Jungle::chopWood() {
         this->character->health -= jungleEvent;
     }
     else {
-        jungleEvent = 1 + (rand() % (this->character->inventory->food / 2));
-        cout << "You are swarmed by monkeys that steal " << jungleEvent << " pieces of food from you" << endl;
-        this->character->inventory->food -=jungleEvent;
+        if (this->character->inventory->food >= 2) {
+            jungleEvent = 1 + (rand() % (this->character->inventory->food / 2));
+            cout << "You are swarmed by monkeys that steal " << jungleEvent << " pieces of food from you" << endl;
+            cout << "If only you had a weapon to fend them off..." << endl;
+            this->character->inventory->food -=jungleEvent;
+        }
+        
     }
 }

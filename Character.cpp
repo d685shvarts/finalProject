@@ -66,7 +66,7 @@ void Character::printCharacterStats() {
 
 void Character::ageCharacter() {
     if (this->health <= 0) {
-        cout << "Your health has fallen below 0, you have died!" << endl;
+        cout << "Your health has fallen to 0 or below, you have died!" << endl;
         this->alive = false;
         return;
     }
@@ -113,7 +113,7 @@ void Character::ageCharacter() {
         }
 
         if (this->health <= 0) {
-            cout << "Your health has fallen below 0! You have died!" << endl;
+            cout << "Your health has fallen to 0 or below! You have died!" << endl;
             this->alive = false;
         }
     }

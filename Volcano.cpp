@@ -1,3 +1,11 @@
+/***************************************************************************************************************************************
+** Program name: Volcano implementation file
+** Author: Daniel Shvarts
+** Date: 03/19/2019
+** Description: Derived from Space base class. Contains constructor to initialize the class with character and inventory objects to interact
+** and modify them. Contains virtual menu function which will display options for user, volcanoRiddle method to have user play a game
+** of riddles to get a reward, and finally a change location method, which enables user to change their location on the map
+**************************************************************************************************************************************/ 
 #include "Volcano.hpp"
 #include "Space.hpp"
 #include "Character.hpp"
@@ -10,38 +18,64 @@ using std::endl;
 using std::cout;
 using std::cin;
 
-
+/*********************************************************************************************************************************
+** Function name: Volcano constructor
+** Description: Constructor will initalize shore objects name and also pass the character and inventory object pointers the base 
+** space class to initialize member variables.
+***********************************************************************************************************************************/
 Volcano::Volcano(Inventory* inventory, Character* character) : Space(inventory, character) {
     this->name = "Volcano";
 }
 
+/*********************************************************************************************************************************
+** Function name: spaceMenu method
+** Description: Overriden method from base class, which dispays options user has to interact with current space. Prompts user to either
+** change their location on the island or interact with current space by searching for supplies and then run functions to accomplish users
+** choice
+***********************************************************************************************************************************/
 void Volcano::spaceMenu() {
     int menuChoice;
+    //Prompt user to select a choice
     cout << "Please select a choice by entering the corresponding integer" << endl;
     cout << "1. Change Location" << endl;
+    cout << "   - Travel to a new location on the island" << endl;
     cout << "2. Approach Volcano" << endl;
-    validateInt(&menuChoice, 1, 3);
+    cout << "   - Investigate the mysterious volcano" << endl;
+    //Validate input
+    validateInt(&menuChoice, 1, 2);
+    //Run method corresponding to user input
     if (menuChoice == 1) {
         changeLocation();
     }
     else if (menuChoice == 2) {
         volcanoRiddle();
     }
-
 }
 
+/*********************************************************************************************************************************
+** Function name: changeLocation method
+** Description: Prompt user to select from one of the neighboring spaces and then will change characters current location accordingly.
+** Will also make sure user has the items required to travel to selected space.
+***********************************************************************************************************************************/
 void Volcano::changeLocation() {
     int location;
+    //Prompt user to select location to travel to
     cout << "Where would you like to travel?" << endl;
     cout << "1. Camp" << endl;
+    cout << "   - Base camp to craft new items" << endl;
     cout << "2. Don't travel" << endl;
+    //Validate input
     validateInt(&location, 1, 2);
     switch (location) {
+        //If user selects camp
         case 1:
+            //Change location to camp, and output position on map
             this->character->currentLocation = this->top;
             this->character->currentLocation->printLocation();
             break;
+        //If user doesnt want to travel
         case 2:
+            //Do nothing
             cout << "You stay where you are" << endl;
             break;
     }
