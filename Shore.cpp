@@ -11,6 +11,10 @@
 #include "Character.hpp"
 #include "Menu.hpp"
 #include <iostream>
+#include <limits>
+
+using std::streamsize;
+using std::cin;
 using std::endl;
 using std::cout;
 
@@ -79,7 +83,8 @@ void Shore::changeLocation() {
             else {
                 //If they dont have required items, notify them
                 cout << "The ocean is a dangerous place, you'll need a boat" << endl;
-                cout << "a compass, 5 piecse of food, and bow and arrows to go here" << endl;
+                cout << "a compass, 5 pieces of food, and bow and arrows to go here\n" << endl;
+                cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
             }
             break;
         //If user wants to travel to shipwreck
@@ -92,7 +97,8 @@ void Shore::changeLocation() {
             }
             else {
                 //If they dont have required items, notify them
-                cout << "The shipwreck is underwater, you'll need an airtank to go here" << endl;
+                cout << "The shipwreck is underwater, you'll need an airtank to go here\n" << endl;
+                cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
             }
             break;
         //If user wants to travel to camp

@@ -11,6 +11,10 @@
 #include "Character.hpp"
 #include "Menu.hpp"
 #include <iostream>
+#include <limits>
+
+using std::streamsize;
+using std::cin;
 using std::endl;
 using std::cout;
 
@@ -186,7 +190,8 @@ void Camp::changeLocation() {
             }
             //If no axe notify them
             else {
-                cout << "The jungle is covered in thick foliage. You need an axe to enter." << endl;
+                cout << "The jungle is covered in thick foliage. You need an axe to enter.\n" << endl;
+                cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
             }
             break;
         //If user selected volcano change location and print location details 
